@@ -1,0 +1,1 @@
+For all shift amounts, I looked at the frequency of each letter. I then scored the shift amounts by the difference between the order of the frequencies of the current shift amount compared to an average for english texts. The shift amount with the lowest score is the one I chose.
