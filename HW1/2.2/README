@@ -1,0 +1,5 @@
+For different key lengths n, I split the ciphertext into rows of n and calculated the best score (like in 2.1) for a Caesar cipher. I then averaged them to get the most likely key length. With that key length, I did the same again, this time looking at the most probable shift amounts and converting them into letters.
+
+Code: see repo at https://github.com/riesentoaster/CSC474/, HW1/2.2/2.2.js
+
+key: ZQSSPJ
