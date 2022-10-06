@@ -1,0 +1,73 @@
+Valentin Huber
+Valentin Clemens Huber
+vhuber
+
+MD5: qijsCA
+SHA256: F6HeI39
+bcrypt: 
+custom: kwura
+custom ec: 
+
+
+MD5: Brute force, with the following hashcat command:
+```
+hashcat -m 0 -a 3 --status -O 4c6bbdb774cb6b387c617819ae369aa7 ?a?a?a?a?a?a
+```
+
+SHA256: brute force, with the following hashcat command:
+```
+hashcat -m 1400 -a 3 --status --session challenge2 -w 3 -O -1 "?l?u?d" 7c1cd4cc972772a5b87517b53016b28be2662fd3350237ebd6b0e86333d3bab7 "?1?1?1?1?1?1?1"
+```
+
+bcrypt: dictionary attack, with the following hashcat command:
+```
+hashcat -m 3200 -a 0 --status --session challenge3 -O "\$2b\$12\$b/ITHriX/XXh6yijgzp4M.F/fj5mMPOv2zRyGKgrnw7JyAjDVd3Ya" ./rockyou.txt
+```
+
+custom: brute force, custom implementation in python:
+```
+import hashlib
+from sys import exit
+
+def hash(input):
+    for i in range(100):
+        input = hashlib.md5(input.encode()).hexdigest()
+    for i in range(100):
+        input = hashlib.sha256(input.encode()).hexdigest()
+    for i in range(100):
+        input = hashlib.sha512(input.encode()).hexdigest()
+    return input
+
+if __name__ == '__main__':
+    checks = {
+        'ncstate': '2d4547b1e59358fbb8846022b58e6c915fa644ee1735788b6cdaf0f8ba4bc3b8ea778d092e786047b018086a0f14db7ba684eefb150a90492d7f9caf6b6bc114',
+        'csc474': 'd07bbb7bf6ca344bd6632b90d38b07a77cdc03f0d18f9a8411b069bd716be5a13bba41cd205432b1bdcca9542c865ccc05e8c4f529f064de1f71c7ee5731beeb',
+        'security': '88466c23009271eb909e586c6707120f30a2dd6ae53fb025badb2f9d0f6765b90f124e3524d2d63719e8e668cf164411a61b1fea077ec1dd3b1db8889622095c'
+    }
+
+    for k,v in checks.items():
+        assert(v == hash(k))
+
+
+    goal = 'ecef65311a33ea20c1138b6d56cd9f6f5e8609e1e709d5d8c27bc70c7c928efbad056fd5154e29a444ee777a2b991a81e92bc21b6f14525ec18da252190d2c0c'
+    assert(goal == hash('kwura'))
+
+    for i1 in range(26):
+        j1 = chr(i1 + ord('a'))
+        print(j1)
+        for i2 in range(26):
+            j2 = chr(i2 + ord('a'))
+            print(j1, j2)
+            for i3 in range(26):
+                j3 = chr(i3 + ord('a'))
+                for i4 in range(26):
+                    j4 = chr(i4 + ord('a'))
+                    for i5 in range(26):
+                        j5 = chr(i5 + ord('a'))
+                        guess = ''.join([j1, j2, j3, j4, j5])
+                        if goal == hash(guess):
+                            print(guess)
+                            exit()
+```
+
+
