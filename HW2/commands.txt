@@ -1,0 +1,11 @@
+# import
+gpg --homedir key --import foreign/
+
+# sign
+gpg --homedir key --sign-key neworth@ncsu.edu
+
+# export
+gpg --homedir key --export -a  neworth@ncsu.edu  > vhuber_signed.gpg
+
+# check-sigs
+gpg --homedir key --check-sigs vhuber@ncsu.edu

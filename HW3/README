@@ -4,7 +4,7 @@ vhuber
 
 MD5: qijsCA
 SHA256: F6HeI39
-bcrypt: 
+bcrypt: monkey
 custom: kwura
 custom ec: 
 
@@ -21,7 +21,7 @@ hashcat -m 1400 -a 3 --status --session challenge2 -w 3 -O -1 "?l?u?d" 7c1cd4cc9
 
 bcrypt: dictionary attack, with the following hashcat command:
 ```
-hashcat -m 3200 -a 0 --status --session challenge3 -O "\$2b\$12\$b/ITHriX/XXh6yijgzp4M.F/fj5mMPOv2zRyGKgrnw7JyAjDVd3Ya" ./rockyou.txt
+hashcat -m 3200 -a 0 --status --session challenge3 -O "\$2b\$12\$F/ITHriX/XXh6yijgzp4M.F/fj5mMPOv2zRyGKgrnw7JyAjDVd3Ya" ./rockyou.txt
 ```
 
 custom: brute force, custom implementation in python:
